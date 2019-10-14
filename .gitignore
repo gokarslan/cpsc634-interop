@@ -1,0 +1,5 @@
+# p4app repo
+p4app/
+
+# python generated binary
+*.pyc
