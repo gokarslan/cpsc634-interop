@@ -6,7 +6,7 @@ This is a candidate repo for automatic [internet router
 interoperability][cs634-project] test. To use it, please:
 
 1. Create your internet router project following the format of the
-   [example](https://github.com/fno2010/maclearning.p4app).
+   [example][ref-router].
 2. Add your project as a submodule of this repo (under the `interop.p4app`
    directory).
 3. Modify the `topo.json` file to configure your own switch.
@@ -18,6 +18,7 @@ guideline and configuration.
 
 [cs634-project]: https://yale-build-a-router.github.io/documentation/internet-router/
 [travis-ci]: https://travis-ci.org/fno2010/internet-router-interop
+[ref-router]: https://github.com/fno2010/maclearning.p4app
 
 ## Create Mininet Switch Class Extending P4RuntimeSwitch
 
@@ -71,7 +72,7 @@ provide some approach to allow mininet to specify this port number from the
 `__init__` method of your switch class.
 
 You can take a look at a [reference
-implementation](https://github.com/fno2010/maclearning.p4app) to better
+implementation][ref-router] to better
 understand how to implement your own switch class.
 
 > **IMPORTANT:** you should create a `__init__.py` file (which can be empty)
@@ -89,12 +90,13 @@ cd internet-router-interop
 
 # Clone your own repo under the interop.p4app dir
 pushd interop.p4app
-# git clone https://github.com/<your_github_name>/<your_repo> <your_name>
+# git clone <url_to_your_repo> <your_name>
 git clone https://github.com/fno2010/pwospf jensen
 popd
 
 # Commit the submodule to the interop repo
-git add .
+# git submodule add <url_to_your_repo> interop.p4app/<your_name>
+git submodule add https://github.com/fno2010/pwospf interop.p4app/jensen
 git commit -m "Add jensen's pwospf router"
 ```
 
