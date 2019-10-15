@@ -1,0 +1,11 @@
+language: minimal
+
+services:
+  - docker
+
+install:
+  - make prepare
+  - git submodule update --init --recursive
+
+script:
+  - make run
