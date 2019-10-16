@@ -1,6 +1,6 @@
 # Internet Router Interoperability
 
-[![Travis-CI Status](https://travis-ci.org/fno2010/internet-router-interop.svg?branch=master)][travis-ci]
+[![Travis-CI Status](https://travis-ci.org/yale-build-a-router/internet-router-interop.svg?branch=master)][travis-ci]
 
 This is a candidate repo for automatic [internet router
 interoperability][cs634-project] test. To use it, please:
@@ -17,7 +17,7 @@ The following sections describe some details about the implementation
 guideline and configuration.
 
 [cs634-project]: https://yale-build-a-router.github.io/documentation/internet-router/
-[travis-ci]: https://travis-ci.org/fno2010/internet-router-interop
+[travis-ci]: https://travis-ci.org/yale-build-a-router/internet-router-interop
 [ref-router]: https://github.com/fno2010/maclearning.p4app
 
 ## Create Mininet Switch Class Extending P4RuntimeSwitch
