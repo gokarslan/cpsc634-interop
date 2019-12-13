@@ -12,6 +12,7 @@ from mininet.util import ipAdd
 
 from p4_mininet import P4Host
 
+
 def initParser():
     parser = argparse.ArgumentParser(description="Start a mininet for interoperability")
     parser.add_argument('--topo', '-t', help="choose a JSON file defining the topology",
@@ -21,6 +22,7 @@ def initParser():
     parser.add_argument('--verbosity', '-v', choices=list(LEVELS.keys()), default='output',
                         help='|'.join(LEVELS.keys()))
     return parser.parse_args()
+
 
 def interopNet(topo):
     net = Mininet(host=P4Host)
@@ -52,8 +54,7 @@ def interopNet(topo):
         sw = net.addSwitch(sw_name, cls=sw_cls, **sw_info)
         if sw_info.get('enable_ctrl'):
             sw_ctrl = net.addHost('%s-c' % sw_name,
-                                  ip=ipAdd(nextIP, ipBaseNum=ipBaseNum,
-                                           prefixLen=prefixLen) + '/%s' % prefixLen)
+                                  ip='10.0.%d.1' % nextIP) # ipAdd(nextIP, ipBaseNum=ipBaseNum, prefixLen=prefixLen) + '/%s' % prefixLen
             nextIP += 1
             net.addLink(sw_ctrl, sw)
 
@@ -68,6 +69,7 @@ def interopNet(topo):
         net.addLink(node1, node2, **link_args)
     return net
 
+
 def interopTest(net):
     """Add test cases for interop
     """
@@ -76,6 +78,7 @@ def interopTest(net):
     net.ping(hosts=hosts)
     for sw in net.switches:
         sw.printTableEntries()
+
 
 def main():
     args = initParser()
@@ -100,6 +103,7 @@ def main():
 
     # Issue: Mininet 2.3.0d1 in P4APP rc-2.0.0 has some bug to stop a mininet session
     # net.stop()
+
 
 if __name__ == '__main__':
     main()
